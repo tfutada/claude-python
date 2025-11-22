@@ -38,8 +38,11 @@ async def demo_basic_coroutine():
     print("=" * 60)
     print("1. BASIC COROUTINE")
     print("=" * 60)
+    abc = 123
+    print(abc)
 
     result = await hello()
+
     print(f"Result: {result}")
     print("-" * 60)
 
