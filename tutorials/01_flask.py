@@ -20,8 +20,7 @@ def index():
 @app.route("/slow")
 def slow():
     """Blocks for 10 seconds - no other requests can be handled by this worker."""
-    time.sleep(10) # GIL is released during sleep, but the thread is blocked. OS kerel takeof sleep timer.
-    fibonacci(35)  # Simulate CPU work holding the GIL even multiple threads mode.
+    time.sleep(10)
     return jsonify({"message": "Done after 10s"})
 
 
@@ -34,4 +33,4 @@ GET /slow  - Blocks for 2 seconds
 
 Test with: curl http://localhost:5001/slow
     """)
-    app.run(debug=True, port=5001, threaded=True)
+    app.run(debug=True, port=5001, threaded=False)
